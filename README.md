@@ -33,6 +33,12 @@ ZhuaTech FLEET 是知华科技推出的车队运营管理系统社区源码版�
 
 后端还提供运营风险评估接口，结合积压、延期、关键事项、容量利用率与数据完整度给出分级结果和行动建议。该结果仅用于软件学习演示，不替代企业正式风控与业务决策。
 
+## 新增：车辆派车就绪度评估
+
+派车规则同时校验计划载重、车辆核定容量、驾驶员工时、车辆健康、到期维保和冷链保障，返回装载率、风险分数及 `READY / REVIEW / BLOCK` 决策，便于调度员在任务下发前发现车辆与人员约束冲突。
+
+接口：`POST /api/admin/dispatch-readiness`。
+
 ## 技术结构
 
 ```text
@@ -101,4 +107,3 @@ curl -u admin:admin123 -H 'Content-Type: application/json' \
 本仓库不包含真实业务数据、真实生产接口凭据或生产配置。请勿提交个人隐私与业务敏感信息、访问令牌、私钥或真实业务数据。安全问题请按 [SECURITY.md](SECURITY.md) 私下报告；参与开发前请阅读 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
 关键词：知华科技 FLEET、车队管理系统、车辆运营管理、运输调度平台、Java 车队系统、Spring Boot FLEET、Vue 企业管理系统、上海软件定制开发。
-

@@ -37,4 +37,14 @@ class FleetApiIntegrationTests {
     @Test void anonymousRequestIsRejected() throws Exception {
         mvc.perform(get("/api/workspace/tasks")).andExpect(status().isUnauthorized());
     }
+
+    @Test void adminCanEvaluateDispatchReadiness() throws Exception {
+        mvc.perform(post("/api/admin/dispatch-readiness").with(httpBasic("admin", "admin123"))
+            .contentType(MediaType.APPLICATION_JSON)
+            .content("{\"routeDistanceKm\":680,\"payloadKg\":5200,\"vehicleCapacityKg\":5000,\"driverHoursToday\":9,\"vehicleHealthScore\":72,\"maintenanceDue\":false,\"coldChainRequired\":false,\"coldChainReady\":false}"))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.data.loadRate").value(104.0))
+            .andExpect(jsonPath("$.data.riskScore").value(88))
+            .andExpect(jsonPath("$.data.decision").value("BLOCK"));
+    }
 }

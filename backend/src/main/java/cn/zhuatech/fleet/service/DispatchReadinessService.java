@@ -9,8 +9,14 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service
 public class DispatchReadinessService {
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public DispatchDecision evaluate(DispatchRequest request) {
         double loadRate = Math.round(request.payloadKg() * 1000.0 / request.vehicleCapacityKg()) / 10.0;
         int riskScore = (loadRate > 100 ? 45 : loadRate > 90 ? 15 : 0)
@@ -30,11 +36,17 @@ public class DispatchReadinessService {
         return new DispatchDecision(loadRate, riskScore, decision, blockers);
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record DispatchRequest(@NotNull @Positive Integer routeDistanceKm,
         @NotNull @Positive Integer payloadKg, @NotNull @Positive Integer vehicleCapacityKg,
         @NotNull @Min(0) @Max(24) Integer driverHoursToday,
         @NotNull @Min(0) @Max(100) Integer vehicleHealthScore,
         @NotNull Boolean maintenanceDue, @NotNull Boolean coldChainRequired,
         @NotNull Boolean coldChainReady) {}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record DispatchDecision(double loadRate, int riskScore, String decision, List<String> blockers) {}
 }

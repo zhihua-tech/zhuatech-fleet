@@ -10,8 +10,14 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service
 public class TripMaintenanceGateService {
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public Result evaluate(Request request) {
         int nextServiceOdometer = request.lastServiceOdometerKm() + request.serviceIntervalKm();
         int distanceToService = nextServiceOdometer - request.currentOdometerKm();
@@ -30,11 +36,17 @@ public class TripMaintenanceGateService {
             decision, actions);
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Request(@NotBlank String vehicleNo, @Min(0) int currentOdometerKm,
                           @Min(0) int lastServiceOdometerKm, @Min(1) int serviceIntervalKm,
                           @Min(0) int plannedTripKm, @Min(0) int activeFaultCodes,
                           @Min(0) @Max(100) int brakeWearPercent,
                           @DecimalMin("0") double minimumTireDepthMm) {}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Result(String vehicleNo, int nextServiceOdometerKm, int distanceToServiceKm,
                          String decision, List<String> actions) {}
 }

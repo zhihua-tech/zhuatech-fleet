@@ -1,0 +1,52 @@
+[
+  {
+    "patch": {},
+    "expected": {
+      "decision": "REVIEW",
+      "expectedLitres": "#10",
+      "deviationPct": "#20",
+      "plannedFuelCost": "#70",
+      "actualFuelCost": "#84"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "actualLitres": "13.1"
+    },
+    "expected": {
+      "decision": "HOLD"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "actualLitres": "10"
+    },
+    "expected": {
+      "decision": "PASS"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "distanceKm": "0",
+      "actualLitres": "1"
+    },
+    "expected": {
+      "decision": "HOLD",
+      "deviationPct": "N/A"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "actualLitres": "11.5"
+    },
+    "expected": {
+      "decision": "PASS",
+      "deviationPct": "#15"
+    },
+    "error": false
+  }
+]
